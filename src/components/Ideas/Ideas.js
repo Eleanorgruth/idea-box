@@ -11,9 +11,9 @@ const Ideas = ({ideas, deleteIdea}) => {
        id={idea.id}
        key={idea.id}
        deleteIdea={deleteIdea}/>
-
     )
   })
+  
   return (
     <div className='ideas-container'>
       {ideaCards}
