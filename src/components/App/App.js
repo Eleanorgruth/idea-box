@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <h1 className="App">Movie</h1>
-        <Banner movieData={this.state.movies}/>
+        {/* <Banner movieData={this.state.movies}/> */}
         <Ideas movieData={this.state.movies}/>
       </div>
     )
