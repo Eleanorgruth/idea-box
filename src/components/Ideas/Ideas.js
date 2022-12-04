@@ -1,3 +1,4 @@
+
 import React from "react";
 import './Ideas.css'
 import Card from '../Card/Card'
@@ -21,3 +22,4 @@ const Ideas = ({ ideas, deleteIdea }) => {
 }
 
 export default Ideas
+

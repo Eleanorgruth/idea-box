@@ -8,6 +8,7 @@ const Card = ({title, description, id, deleteIdea}) => {
       <p>idea: {description}</p>
       <button onClick={() => deleteIdea(id)}>Delete</button>
     </div>
+
   )
 }
 

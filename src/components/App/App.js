@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+
 import ideasArray from "../../data"
 import Form from "../Form/Form"
 import Ideas from "../Ideas/Ideas"
@@ -29,6 +30,7 @@ class App extends Component {
         <Form addIdea={this.addIdea}/>
         <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea}/>
       </main>
+
     )
   }
 }
