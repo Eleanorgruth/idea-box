@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react"
 import './Card.css'
 
-const Card = ({title, releaseDate, picture}) => {
+const Card = ({title, description, id, deleteIdea}) => {
   return (
-    <section className='card'>
-      <img className='picture' src={picture} alt={title}/>
-      <h2>{title}</h2>
-      <p>{releaseDate}</p>
-    </section>
+    <div className="card">
+      <p>title: {title} </p>
+      <p>idea: {description}</p>
+      <button onClick={() => deleteIdea(id)}>Delete</button>
+    </div>
+
   )
 }
 

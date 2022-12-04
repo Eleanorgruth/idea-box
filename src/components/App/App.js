@@ -1,24 +1,36 @@
 import React, { Component } from "react"
+
+import ideasArray from "../../data"
+import Form from "../Form/Form"
+import Ideas from "../Ideas/Ideas"
 import './App.css'
-import movieData from "../../movieData"
-import Ideas from '../Ideas/Ideas'
-import Banner from '../Banner/Banner'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      movies: movieData.movies
+      ideas: ideasArray
     }
   }
+  addIdea = (newIdea) => {
+    this.setState({ideas: [...this.state.ideas, newIdea]})
+  }
+  deleteIdea = (id) => {
+    const ideasArra = this.state.ideas.filter((idea) => {
+      return idea.id != id 
+    })
+    this.setState({ideas: ideasArra})
+  }
 
+ 
   render() {
     return (
-      <div>
-        <h1 className="App">Movie</h1>
-        {/* <Banner movieData={this.state.movies}/> */}
-        <Ideas movieData={this.state.movies}/>
-      </div>
+      <main>
+        <h1>IdeaBox</h1>
+        <Form addIdea={this.addIdea}/>
+        <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea}/>
+      </main>
+
     )
   }
 }

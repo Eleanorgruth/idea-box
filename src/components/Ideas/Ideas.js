@@ -1,28 +1,25 @@
-import React from "react"
+
+import React from "react";
 import './Ideas.css'
 import Card from '../Card/Card'
 
-const Ideas = ({movieData}) => {
-  console.log(movieData)
-  
-  const movieArray = movieData.map(movie => {
-    return (
-      <Card 
-        title={movie.title}
-        releaseDate={movie.release_date}
-        picture={movie.poster_path}
-        id={movie.id}
-        key={movie.id}
-      />
-      )
-    })
-    return (
-      <div className='ideas-container'>
-        {movieArray}
-      </div>
-    )
+const Ideas = ({ ideas, deleteIdea }) => {
+  const cards = ideas.map(idea => {
+    return <Card 
+    title={idea.title}
+    key={idea.id}
+    description={idea.description}
+    id={idea.id}
+    deleteIdea={deleteIdea}
+    />
+  })
+  return (
+    <div className='ideas'>
+      {cards}
+    </div>
 
-   
+  )
 }
 
 export default Ideas
+
