@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 import ideasArray from "../../data"
 import Ideas from "../Ideas/Ideas"
+import Form from '../Form/Form'
 import './App.css'
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <main>
         <h1>IdeaBox</h1>
+        <Form />
         <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea}/>
       </main>
 
