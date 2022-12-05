@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 
 import ideasArray from "../../data"
-import Form from "../Form/Form"
 import Ideas from "../Ideas/Ideas"
 import './App.css'
 
@@ -11,9 +10,6 @@ class App extends Component {
     this.state = {
       ideas: ideasArray
     }
-  }
-  addIdea = (newIdea) => {
-    this.setState({ideas: [...this.state.ideas, newIdea]})
   }
   deleteIdea = (id) => {
     const ideasArra = this.state.ideas.filter((idea) => {
@@ -27,7 +23,6 @@ class App extends Component {
     return (
       <main>
         <h1>IdeaBox</h1>
-        <Form addIdea={this.addIdea}/>
         <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea}/>
       </main>
 
