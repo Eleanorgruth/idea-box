@@ -9,9 +9,17 @@ class Form extends Component {
       description: "",
     }
   }
-
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value})
+  }
+  submitIdea = (event) => {
+    event.preventDefault()
+    const newIdea = {
+      id: Date.now()
+      ...this.state
+    }
+    this.props.addIdea(newIdea)
+  
   }
   render() {
     return (
@@ -30,7 +38,7 @@ class Form extends Component {
         type="text"
         onChange={(event) => this.handleChange(event)}
       />
-      <button>Submit</button>
+      <button onClick={()=> this.submitIdea()}>Submit</button>
     </form>
     )
   }
