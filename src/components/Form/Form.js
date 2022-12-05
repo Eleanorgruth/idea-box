@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import '.Form/css'
+import './Form.css'
 
 class Form extends Component {
   constructor() {
     super()
     this.state = {
+      title: "", 
+      description: "",
     }
+  }
+
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})
   }
   render() {
     return (
@@ -15,14 +21,14 @@ class Form extends Component {
         value={this.state.title}
         name="title"
         type="text"
-        onChange={this.handleChange}
+        onChange={(event)=> this.handleChange(event)}
       />
       <input
         placeholder="description"
         value={this.state.description}
         name="description"
         type="text"
-        onChange={this.handleChange}
+        onChange={(event) => this.handleChange(event)}
       />
       <button>Submit</button>
     </form>
