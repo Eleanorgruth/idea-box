@@ -11,7 +11,9 @@ class App extends Component {
       ideas: ideasArray
     }
   }
-
+  addIdea = (newIdea) => {
+    this.setState({ideas: [...this.state.ideas, newIdea]})
+  }
   deleteIdea = (id) => {
     const ideasArra = this.state.ideas.filter((idea) => {
       return idea.id != id 
@@ -24,6 +26,7 @@ class App extends Component {
     return (
       <main>
         <h1>IdeaBox</h1>
+        <Form addIdea={this.addIdea}/>
         <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea}/>
       </main>
     )
