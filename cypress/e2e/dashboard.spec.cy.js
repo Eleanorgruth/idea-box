@@ -18,4 +18,17 @@ describe('Dashboard view page', () => {
       .type('test2')
       .should('have.value', 'test2')
   })
+  it('Should be able to post new ideas', () => {
+    cy.intercept('POST', 'http://localhost:3001/ideas', {
+      statusCode: 201,
+      body: {
+        id: 2,
+        title: 'test22',
+        description: 'test22'
+      }
+    })
+    .get('[placeholder="title"]').type("test title")
+    .get('[placeholder="description"]').type('test description')
+    .get('form > button').click()
+  })
 })
