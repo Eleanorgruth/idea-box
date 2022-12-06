@@ -23,10 +23,15 @@ class App extends Component {
     this.setState({ideas: [...this.state.ideas, newIdea]})
   }
   deleteIdea = (id) => {
-    const ideasArra = this.state.ideas.filter((idea) => {
-      return idea.id != id 
+    fetch(`http://localhost:3001/ideas/${id}`, {
+      method: 'DELETE'
     })
-    this.setState({ideas: ideasArra})
+      .then(res=>res.json())
+      .then(res => 
+        this.setState({ideas: res})
+    )
+
+    // this.setState({ideas: ideasArra})
   }
 
   render() {
