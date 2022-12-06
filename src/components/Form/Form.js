@@ -12,6 +12,18 @@ class Form extends Component {
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value})
   }
+  submitItem = (event) => {
+    event.preventDefault()
+    fetch("http://localhost:3001/items", {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    .then(res=> res.json())
+    .then(data=> console.log(data))
+  }
   render() {
     return (
       <form>
@@ -29,7 +41,7 @@ class Form extends Component {
           value={this.state.amount}
           onChange={(event) => this.handleChange(event)}
         />
-        <button>
+        <button onClick={(event)=>this.submitItem(event)}>
           Add Item
         </button>
       </form>
