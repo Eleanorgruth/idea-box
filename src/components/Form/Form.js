@@ -1,55 +1,50 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import './Form.css'
 
 class Form extends Component {
   constructor() {
     super()
     this.state = {
-      title: "", 
-      description: "",
+      name: '', 
+      amount: ''
     }
   }
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value})
   }
-  submitIdea = (event) => {
+  submitItem = (event) => {
     event.preventDefault()
-    fetch('http://localhost:3001/ideas', {
+    fetch("http://localhost:3001/items", {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/JSON'
       }
     })
-    .then(res=>res.json())
-    .then(data=> {
-      console.log(data)
-      this.props.addIdea(data)
-    })
-    this.clearInputs()
-  }
-  clearInputs = () => {
-    this.setState({title: "", description: ""})
+    .then(res=> res.json())
+    .then(data=> console.log(data))
   }
   render() {
     return (
-    <form>
-      <input
-        placeholder="title"
-        value={this.state.title}
-        name="title"
-        type="text"
-        onChange={(event)=> this.handleChange(event)}
-      />
-      <input
-        placeholder="description"
-        value={this.state.description}
-        name="description"
-        type="text"
-        onChange={(event) => this.handleChange(event)}
-      />
-      <button onClick={(event)=> this.submitIdea(event)}>Submit</button>
-    </form>
+      <form>
+        <input
+          placeholder='Item Name'
+          name='name'
+          type='text'
+          value={this.state.name}
+          onChange={(event) => this.handleChange(event)}
+        />
+         <input
+          placeholder='Item Amount'
+          name='amount'
+          type='text'
+          value={this.state.amount}
+          onChange={(event) => this.handleChange(event)}
+        />
+        <button onClick={(event)=>this.submitItem(event)}>
+          Add Item
+        </button>
+      </form>
     )
   }
 }
