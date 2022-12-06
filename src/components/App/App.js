@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-
-import ideasArray from "../../data"
 import Ideas from "../Ideas/Ideas"
 import Form from '../Form/Form'
 import './App.css'
@@ -9,18 +7,28 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      ideas: ideasArray
+      ideas: []
     }
   }
-
+  componentDidMount() {
+    fetch("http://localhost:3001/ideas")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ideas: data})})
+  }
   addIdea = (newIdea) => {
     this.setState({ideas: [...this.state.ideas, newIdea]})
   }
   deleteIdea = (id) => {
-    const ideasArra = this.state.ideas.filter((idea) => {
-      return idea.id != id 
+    fetch(`http://localhost:3001/ideas/${id}`, {
+      method: 'DELETE'
     })
-    this.setState({ideas: ideasArra})
+      .then(res=>res.json())
+      .then(res => 
+        this.setState({ideas: res})
+    )
+
+    // this.setState({ideas: ideasArra})
   }
 
   render() {
