@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-
-// import ideasArray from "../../data"
 import Ideas from "../Ideas/Ideas"
 import Form from '../Form/Form'
 import './App.css'
@@ -16,7 +14,6 @@ class App extends Component {
     fetch("http://localhost:3001/ideas")
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         this.setState({ideas: data})})
   }
   addIdea = (newIdea) => {
