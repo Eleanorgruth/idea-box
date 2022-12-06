@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 
 import ideasArray from "../../data"
-import Form from "../Form/Form"
 import Ideas from "../Ideas/Ideas"
+import Form from '../Form/Form'
 import './App.css'
 
 class App extends Component {
@@ -12,6 +12,7 @@ class App extends Component {
       ideas: ideasArray
     }
   }
+
   addIdea = (newIdea) => {
     this.setState({ideas: [...this.state.ideas, newIdea]})
   }
@@ -22,7 +23,6 @@ class App extends Component {
     this.setState({ideas: ideasArra})
   }
 
- 
   render() {
     return (
       <main>
