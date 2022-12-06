@@ -14,11 +14,18 @@ class Form extends Component {
   }
   submitIdea = (event) => {
     event.preventDefault()
-    const newIdea = {
-      id: Date.now(),
-      ...this.state
-    }
-    this.props.addIdea(newIdea)
+    fetch('http://localhost:3001/ideas', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(res=>res.json())
+    .then(data=> {
+      console.log(data)
+      this.props.addIdea(data)
+    })
     this.clearInputs()
   }
   clearInputs = () => {
