@@ -12,8 +12,9 @@ class App extends Component {
       ideas: ideasArray
     }
   }
+
   addIdea = (newIdea) => {
-    this.setState([...this.state.ideas, newIdea])
+    this.setState({ideas: [...this.state.ideas, newIdea]})
   }
   deleteIdea = (id) => {
     const ideasArra = this.state.ideas.filter((idea) => {
@@ -22,7 +23,6 @@ class App extends Component {
     this.setState({ideas: ideasArra})
   }
 
- 
   render() {
     return (
       <main>
