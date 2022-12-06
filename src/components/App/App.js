@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Ideas from '../Ideas/Ideas'
 import './App.css'
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <main>
         <h1>Shopping List</h1>
+        <Ideas/>
       </main>
     )
   }
