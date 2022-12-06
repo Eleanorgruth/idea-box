@@ -9,6 +9,9 @@ class Form extends Component {
       amount: ''
     }
   }
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
   render() {
     return (
       <form>
@@ -17,14 +20,14 @@ class Form extends Component {
           name='name'
           type='text'
           value={this.state.name}
-          onChange={() => this.handleChange}
+          onChange={(event) => this.handleChange(event)}
         />
          <input
           placeholder='Item Amount'
           name='amount'
           type='text'
           value={this.state.amount}
-          onChange={() => this.handleChange}
+          onChange={(event) => this.handleChange(event)}
         />
         <button>
           Add Item
