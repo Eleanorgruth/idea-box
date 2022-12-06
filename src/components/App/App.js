@@ -8,9 +8,17 @@ class App extends Component {
       ideas: []
     }
   }
+  componentDidMount() {
+    fetch("http://localhost:3001/items")
+      .then(res => res.json())
+      .then(data => this.setState({ideas: data}))
+  }
   render() {
     return (
-    <h1>IdeaBox</h1>)
+      <main>
+        <h1>Shopping List</h1>
+      </main>
+    )
   }
 }
 
