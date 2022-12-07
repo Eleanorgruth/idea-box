@@ -10,6 +10,10 @@ class App extends Component {
       ideas: []
     }
   }
+  addItem = (newIdea) => {
+    this.setState=({ideas: [...this.state.ideas], newIdea})
+    console.log(this.state.ideas)
+  }
   componentDidMount() {
     fetch("http://localhost:3001/items")
       .then(res => res.json())
@@ -28,7 +32,7 @@ class App extends Component {
     return (
       <main>
         <h1>Shopping List</h1>
-        <Form />
+        <Form addItem={this.addItem}/>
         <Ideas ideas={this.state.ideas}/>
       </main>
     )
