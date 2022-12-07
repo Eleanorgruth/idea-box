@@ -14,8 +14,15 @@ class App extends Component {
     this.setState=({ideas: [...this.state.ideas], newIdea})
     console.log(this.state.ideas)
   }
+  deleteItem = (id) => {
+    fetch(`http://localhost:3001/items/${id}`, {
+      method: 'DELETE',
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+  }
   componentDidMount() {
-    fetch("http://localhost:3001/items")
+    fetch(`http://localhost:3001/items`)
       .then(res => res.json())
       .then(data => {
         console.log("DATA". data)
@@ -33,7 +40,7 @@ class App extends Component {
       <main>
         <h1>Shopping List</h1>
         <Form addItem={this.addItem}/>
-        <Ideas ideas={this.state.ideas}/>
+        <Ideas ideas={this.state.ideas} deleteItem={this.deleteItem}/>
       </main>
     )
   }
