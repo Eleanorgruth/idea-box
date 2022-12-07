@@ -13,14 +13,23 @@ class App extends Component {
   componentDidMount() {
     fetch("http://localhost:3001/items")
       .then(res => res.json())
-      .then(data => this.setState({ideas: data}))
+      .then(data => {
+        console.log("DATA". data)
+        this.setState({ideas: data})})
   }
+//   componentDidUpdate() {
+//     fetch("http://localhost:3001/items")
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log("DATA". data)
+//   })
+// }
   render() {
     return (
       <main>
         <h1>Shopping List</h1>
         <Form />
-        <Ideas/>
+        <Ideas ideas={this.state.ideas}/>
       </main>
     )
   }
