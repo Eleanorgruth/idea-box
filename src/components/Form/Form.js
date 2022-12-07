@@ -12,6 +12,10 @@ class Form extends Component {
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value})
   }
+
+  clearInputs = () => {
+    this.setState({name: '', amount: ''})
+  }
   submitItem = (event) => {
     event.preventDefault()
     fetch("http://localhost:3001/items", {
@@ -22,7 +26,12 @@ class Form extends Component {
       }
     })
     .then(res=> res.json())
-    .then(data=> console.log(data))
+    .then(data=> {
+      console.log("DATA", data)
+      // this.setState({})
+      this.props.addItem(data)
+    })
+    this.clearInputs()
   }
   render() {
     return (
