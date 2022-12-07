@@ -11,6 +11,7 @@ class App extends Component {
     }
   }
   addItem = (newIdea) => {
+    console.log("NEWIDEA",newIdea)
     this.setState=({ideas: [...this.state.ideas], newIdea})
     console.log(this.state.ideas)
   }

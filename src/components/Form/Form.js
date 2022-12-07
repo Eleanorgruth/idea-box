@@ -26,7 +26,11 @@ class Form extends Component {
       }
     })
     .then(res=> res.json())
-    .then(data=> this.props.addItem(data))
+    .then(data=> {
+      console.log("DATA", data)
+      // this.setState({})
+      this.props.addItem(data)
+    })
     this.clearInputs()
   }
   render() {
