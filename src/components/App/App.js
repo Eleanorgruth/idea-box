@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import Ideas from '../Ideas/Ideas'
 import Form from '../Form/Form'

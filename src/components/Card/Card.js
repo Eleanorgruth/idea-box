@@ -12,3 +12,4 @@ const Card = ({item, amount, deleteItem, id}) => {
 }
 
 export default Card
+
