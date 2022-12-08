@@ -21,7 +21,7 @@ class App extends Component {
       method: 'DELETE',
     })
     .then(res => res.json())
-    .then(res => console.log(res))
+    .then(res => this.setState({ideas: res}))
   }
   componentDidMount() {
     fetch(`http://localhost:3001/items`)
@@ -34,7 +34,7 @@ class App extends Component {
 //     fetch("http://localhost:3001/items")
 //     .then(res => res.json())
 //     .then(data => {
-//       console.log("DATA". data)
+//       console.log("DATA", data)
 //   })
 // }
   render() {
