@@ -18,19 +18,19 @@ class Form extends Component {
   }
   submitItem = (event) => {
     event.preventDefault()
-    fetch("http://localhost:3001/items", {
-      method: 'POST',
-      body: JSON.stringify(this.state),
-      headers: {
-        'Content-Type': 'application/JSON'
-      }
-    })
-    .then(res=> res.json())
-    .then(data=> {
-      console.log("DATA", data)
-      // this.setState({})
-      this.props.addItem(data)
-    })
+    this.props.addItem(this.state)
+    // fetch("http://localhost:3001/items", {
+    //   method: 'POST',
+    //   body: JSON.stringify(this.state),
+    //   headers: {
+    //     'Content-Type': 'application/JSON'
+    //   }
+    // })
+    // .then(res=> res.json())
+    // .then(data=> {
+    //   console.log("DATA", data)
+    //   this.props.addItem(data)
+    // })
     this.clearInputs()
   }
   render() {
