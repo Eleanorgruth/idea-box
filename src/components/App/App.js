@@ -11,11 +11,22 @@ class App extends Component {
       ideas: []
     }
   }
+
   addItem = (newIdea) => {
-    console.log("NEWIDEA",newIdea)
-    this.setState=({ideas: [...this.state.ideas], newIdea})
-    console.log(this.state.ideas)
+    fetch("http://localhost:3001/items", {
+      method: 'POST',
+      body: JSON.stringify(newIdea),
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    .then(res=> res.json())
+    .then(data=> {
+      console.log("POST DATA", data)
+      this.setState=({ideas: [...this.state.ideas, data]})
+    })
   }
+
   deleteItem = (id) => {
     fetch(`http://localhost:3001/items/${id}`, {
       method: 'DELETE',
@@ -27,7 +38,7 @@ class App extends Component {
     fetch(`http://localhost:3001/items`)
       .then(res => res.json())
       .then(data => {
-        console.log("DATA". data)
+        console.log("DATA", data)
         this.setState({ideas: data})})
   }
 //   componentDidUpdate() {
